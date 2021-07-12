@@ -78,3 +78,36 @@
   box-shadow: 0 0 10px 0 #F137A6 inset, 0 0 10px 4px #F137A6;
   color: #F137A6;
 }
+.modal-wrapper{
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.modal{
+  width: 500px;
+  height: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid;
+  border-radius: 30px;
+  background: white;
+  position: relative;
+  top: 30%;
+}
+.modal-head{
+  display: flex;
+  justify-content: flex-end;
+}
+.posts-header{
+  display: flex;
+    margin: 0 auto;
+    width: 400px;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: center;
+}

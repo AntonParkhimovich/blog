@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import User from "./User"
  const UserInfo=(props)=>{
-   let login = true
+   let {login} = props
     return(
        <User login={login}/>
     )
