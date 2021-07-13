@@ -24,7 +24,7 @@ const User = (props)=>{
     <section className="user-Info">
     <img className='user-avatar'src={userInfo.avatarSrc} alt={'user-avatar'}></img>
     <section className='about'>
-        <h2>{userInfo.name}</h2> 
+        <h2>{userInfo.nickname}</h2> 
     </section>
 </section>
     </>

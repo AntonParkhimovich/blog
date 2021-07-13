@@ -6,8 +6,10 @@ import setData from './data'
 import Modal from './Modal';
 import Posts from './Posts';
 
+
 import UserInfo from "./UserInfo"
 setData()
+console.log();
 function App() {
   let data =  JSON.parse(localStorage.getItem('userInfo'))
   let {login} = data[2]

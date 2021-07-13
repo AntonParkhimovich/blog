@@ -111,3 +111,21 @@
     align-content: stretch;
     justify-content: center;
 }
+.post{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+.post-avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 19px;
+    border: 1px solid;
+}
+.post-user__text{
+     width: 58%;
+     height: 161px;
+     word-break: break-all;
+}
