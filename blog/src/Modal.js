@@ -1,10 +1,15 @@
-import React, {useState}from 'react'
+import React, {useState, useContext}from 'react'
+import ContextData from './ContextData'
+import ThemeContext from './ThemeContext'
+import { useHistory } from 'react-router'
 const Modal = (props)=>{
     const {loginIn, isLogin, showModal, show} = props
+    const[data, setData]= useContext(ContextData)
     const [userValue, setUserValue]= useState('')
     const [passwordValue, setPasswordValue]= useState('')
-    let data =  JSON.parse(localStorage.getItem('userInfo'))
+    const[context] = useContext(ThemeContext)
     let {username, password} = data[2]
+    let history = useHistory()
 
     const userHandler=(event)=>{
         const {value} = event.target
@@ -15,21 +20,20 @@ const Modal = (props)=>{
         setPasswordValue(value)
     }
     const clickHandler=()=>{
-        if(username === userValue|| password === passwordValue){
+        if(username === userValue && password === passwordValue){
             isLogin(!loginIn)
             data[2].login = true
-            localStorage.setItem('userInfo', JSON.stringify(data))
-            show(!showModal)
+            setData(data)
+            history.goBack()
         }
     }
     const closeModal=()=>{
-        show(!showModal)
+        history.goBack()
     }
-
     return(
         <>
        <div className ={'modal-wrapper'}>
-            <div className={'modal'}>
+            <div className={`modal ${context? 'black': 'white'}`}>
                 <div className={'modal-head'}>
                     <button className={'button-close'} onClick={closeModal}>{'X'}</button>
                  </div>

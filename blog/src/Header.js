@@ -1,18 +1,21 @@
+import { useContext } from "react" 
+import ThemeButton from "./ThemeButton"
+import ContextData from "./ContextData"
+import { Link } from "react-router-dom"
  export const Header = (props)=>{
-     const {showModal, show, isLogin, loginIn} = props
-     let data =  JSON.parse(localStorage.getItem('userInfo'))
+     const {isLogin, loginIn, to} = props
+     const [data, setData] = useContext(ContextData)
      const clickHandler = () =>{
-         if(loginIn){
             isLogin(!loginIn)
             data[2].login = false
-            localStorage.setItem('userInfo', JSON.stringify(data))
-         }else{
-            show(!showModal)
-         }
+            setData(data)
      }
     return (
         <header className="header">
-            <button className="header-button" onClick= {clickHandler}>{loginIn?"logout":'Login'}</button>
+            <ThemeButton/>
+            {loginIn ?
+             <button className="header-button" onClick={clickHandler}>Logout</button>
+            :<Link to={to} className="header-button"> login</Link>}
         </header>
     )
 }

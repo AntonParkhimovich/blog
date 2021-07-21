@@ -1,15 +1,17 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
+import ContextData from "./ContextData"
 const EditableField=(props)=>{
+    const[data]= useContext(ContextData)
     const [show, setShow] = useState(false)
-    let {text, data, setUserInfo, keyValue, user}= props
+    let {text, setUserInfo, keyValue, user}= props
     const [value, setValue] = useState(text)
-   
+    
     const changeHandler = ({target})=>{
        setValue(target.value)
    }
     const clickHadler = ()=>{
         data[user][keyValue] = value
-        setUserInfo(data)
+        setUserInfo(value)
         localStorage.setItem('userInfo', JSON.stringify(data))
         setShow(!show)
     }
