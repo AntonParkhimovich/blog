@@ -1,6 +1,6 @@
 import React, {useContext, useState}from 'react'
 import PostsHeader from './PostsHeader'
-import Post from './Post'
+import {Post, PostPreview} from './Post'
 import ContextData from './ContextData'
 import PostConstructor from './postsConstructor'
 
@@ -12,6 +12,7 @@ import {
     Link,
     useRouteMatch
   } from "react-router-dom";
+
 
 const Posts = (props)=>{
     const {loginIn} = props
@@ -35,7 +36,7 @@ const Posts = (props)=>{
    
     return(
         <>
-        
+         <Router>
         <PostsHeader
          changeHandler={changeHandler}
          value={value}
@@ -44,20 +45,15 @@ const Posts = (props)=>{
         {userInfo.posts.map((element)=>{
             return(
             <>
+            <PostPreview data={userInfo} text={element.text} date={element.date} id={element.id} url={url}/>
+            <Switch>
+            <Route exact path={`${path}/${element.id}`}>
             <Post data={userInfo} text={element.text} date={element.date} id={element.id} url={url}/>
+            </Route>
+            </Switch>
             </>
-
             )
         })}
-        <Router>
-        <Switch>
-        <Route exact path={path}>
-          <h3>Please select a topic.</h3>
-        </Route>
-        <Route path={`${path}/:`}>
-        <h2>hello</h2>
-        </Route>
-        </Switch>
         </Router>
          </>
     )

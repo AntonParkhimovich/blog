@@ -32,21 +32,18 @@ function App() {
             <ContextData.Provider value={[dataLocalstorage, setData]}>
             <ThemeContext.Provider value={[context, setContext]}>
             <Router>
+            <div className={`wrapper ${context? 'black': 'white'}`}>
+              <Header loginIn={loginIn} isLogin={isLogin} to={'/auth'}/>
+            </div>
             <Switch>
             <Route exact path="/">
-              <div className={`wrapper ${context? 'black': 'white'}`}>
-              <Header loginIn={loginIn} isLogin={isLogin} to={'/auth'}/>
               <UserInfo login={loginIn} />
-              </div>
              </Route>
-             <Route exact path = '/posts'>
-             <div className={`wrapper ${context? 'black': 'white'}`}>
-              <Header loginIn={loginIn} isLogin={isLogin} to={'/auth'}/>
+             <Route path = '/posts'>
               <UserInfo login={loginIn} />
               <Posts loginIn ={loginIn}/>
-              </div>
              </Route>
-             <Route exact path = '/auth'>
+             <Route  path = '/auth'>
              <Modal loginIn={loginIn} isLogin={isLogin}/>
              </Route>
             </Switch>
